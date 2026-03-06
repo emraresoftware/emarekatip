@@ -1,0 +1,106 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "emare-katip"
+version = "1.0.0"
+description = "KINGSTON Disk Veri Toplayıcı & Analizcisi — Projelerinizi tarar, analiz eder ve raporlar."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Emre", email = "emre@emare.dev"},
+]
+keywords = ["disk-analyzer", "project-scanner", "report-generator", "kingston"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Filesystems",
+    "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+yaml = ["pyyaml>=6.0"]
+dashboard = ["streamlit>=1.30", "plotly>=5.18", "pandas>=2.1"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "mypy>=1.8",
+]
+all = ["emare-katip[yaml,dashboard,dev]"]
+
+[project.scripts]
+emare-katip = "main:main"
+
+[project.urls]
+Homepage = "https://github.com/emre/emare-katip"
+Documentation = "https://github.com/emre/emare-katip/tree/main/docs"
+Issues = "https://github.com/emre/emare-katip/issues"
+
+# ── Araçlar ───────────────────────────────────────────────────
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short -q"
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "RUF",  # ruff-specific
+]
+ignore = [
+    "E501",   # satır uzunluğu (ruff.line-length zaten kontrol eder)
+    "RUF001", # Türkçe karakter uyarıları
+    "RUF002",
+    "RUF003",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "scanner", "models", "analyzers", "reporters", "collectors", "exceptions"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "tests/*",
+    "dashboard.py",
+    "__pycache__/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+fail_under = 60

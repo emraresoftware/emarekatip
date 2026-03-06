@@ -1,0 +1,157 @@
+# ═══════════════════════════════════════════════════════════════
+#  Emare Katip — Yapılandırma Dosyası (config.yaml)
+# ═══════════════════════════════════════════════════════════════
+# Bu dosyayı düzenleyerek Emare Katip'in davranışını
+# koda dokunmadan özelleştirebilirsiniz.
+# ═══════════════════════════════════════════════════════════════
+
+# ── Tarama Ayarları ────────────────────────────────────────────
+scan:
+  # Taranan kök dizin (boş bırakılırsa KINGSTON kökü kullanılır)
+  root: ""
+
+  # Hariç tutulan klasörler
+  excluded_dirs:
+    - .DS_Store
+    - .DocumentRevisions-V100
+    - .Spotlight-V100
+    - .TemporaryItems
+    - .Trashes
+    - .fseventsd
+    - .com.apple.timemachine.supported
+    - __pycache__
+    - node_modules
+    - .git
+    - .venv
+    - venv
+    - vendor
+    - .idea
+    - .vscode
+    - Visual Studio Code.app
+    - WinBox.app
+    - VSCode-darwin-universal.zip
+    - Emare Katip          # Kendimizi taramayalım
+    - EmareKatip            # Eski boş klasör
+
+  # Maksimum dizin derinliği (0 = sınırsız)
+  max_depth: 0
+
+  # Dosya satır sayımında maksimum dosya boyutu (MB)
+  max_file_size_mb: 50
+
+# ── Rapor Ayarları ─────────────────────────────────────────────
+reports:
+  # Üretilecek rapor formatları
+  formats:
+    - markdown
+    - json
+    - html
+    - csv
+
+  # En büyük N proje (özet raporda)
+  top_projects: 10
+
+  # Markdown raporunda satır limiti (proje açıklaması)
+  description_max_chars: 500
+
+  # Zaman damgası formatı
+  timestamp_format: "%Y-%m-%d_%H-%M-%S"
+  date_format: "%d %B %Y, %H:%M"
+
+# ── Loglama Ayarları ──────────────────────────────────────────
+logging:
+  # Seviye: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: INFO
+
+  # Konsola log yazılsın mı?
+  console: true
+
+  # Log dosyası formatı
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# ── Dosya Uzantıları ──────────────────────────────────────────
+extensions:
+  code:
+    .py: Python
+    .js: JavaScript
+    .ts: TypeScript
+    .jsx: React JSX
+    .tsx: React TSX
+    .php: PHP
+    .rs: Rust
+    .go: Go
+    .java: Java
+    .c: C
+    .cpp: C++
+    .h: C/C++ Header
+    .swift: Swift
+    .rb: Ruby
+    .sh: Shell
+    .bash: Bash
+    .zsh: Zsh
+
+  docs:
+    .md: Markdown
+    .txt: Text
+    .rst: reStructuredText
+    .pdf: PDF
+    .doc: Word
+    .docx: Word
+
+  config:
+    .json: JSON
+    .yaml: YAML
+    .yml: YAML
+    .toml: TOML
+    .ini: INI
+    .cfg: Config
+    .env: Environment
+    .xml: XML
+
+  data:
+    .csv: CSV
+    .sqlite: SQLite
+    .db: Database
+    .sql: SQL
+
+# ── Proje Tanıma Kuralları ────────────────────────────────────
+project_markers:
+  python:
+    - requirements.txt
+    - setup.py
+    - pyproject.toml
+    - Pipfile
+    - setup.cfg
+    - main.py
+    - app.py
+  nodejs:
+    - package.json
+    - yarn.lock
+    - package-lock.json
+  php_laravel:
+    - artisan
+    - composer.json
+  rust:
+    - Cargo.toml
+    - Cargo.lock
+  general:
+    - README.md
+    - README.txt
+    - readme.md
+
+# ── Git Collector Ayarları ─────────────────────────────────────
+git:
+  # Git bilgisi toplansın mı?
+  enabled: true
+
+  # Komut zaman aşımı (saniye)
+  timeout: 5
+
+# ── Dashboard Ayarları ─────────────────────────────────────────
+dashboard:
+  # Streamlit port
+  port: 8501
+
+  # Varsayılan tema
+  theme: dark

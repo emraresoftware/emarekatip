@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.cursor/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+target/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite3
+instance/
+
+# Misc
+*.zip
+*.tar.gz
+.coverage
+.pytest_cache/
+.ruff_cache/
+data/harita.md
+data/*.md
+__pycache__/
+.DS_Store
+logs/
+reports/
+.coverage
+.pytest_cache/
+.ruff_cache/
+
+data/iskelet.json
+data/harita.md
+data/son_tarama.json
+data/scan_*.json
+data/duplikeler.json
