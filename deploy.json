@@ -1,0 +1,22 @@
+{
+  "slug": "emarekatip",
+  "name": "Emare Katip",
+  "github_repo": "emraresoftware/emarekatip",
+  "branch": "main",
+  "dc": "local",
+  "server_host": null,
+  "server_ssh_port": 22,
+  "remote_path": "/opt/emarekatip",
+  "stack": "python-gunicorn",
+  "port": 8313,
+  "domain": "",
+  "deploy_commands": [
+    "cd /opt/emarekatip",
+    "git pull origin main",
+    "source venv/bin/activate && pip install -r requirements.txt -q",
+    "sudo systemctl restart emarekatip"
+  ],
+  "restart_command": "systemctl status emarekatip --no-pager",
+  "auto_deploy_on_push": false,
+  "health_check_url": null
+}
